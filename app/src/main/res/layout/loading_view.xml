@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
+    <data>
+
+        <variable name="viewmodel" type="com.example.movies.utility.DialogViewModel"/>
+        <variable name="model" type="com.example.movies.utility.Message"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ViewFlipper
+                android:id="@+id/flipper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:messageApiStatusFlipper="@{viewmodel.status}">
+
+            <include android:id="@+id/message_dialog_loading_page" layout="@layout/message_dialog_loading_page"
+                     bind:modelLoading="@{viewmodel}"
+            />
+            <include android:id="@+id/message_dialog_warning_page" layout="@layout/message_dialog_warning_page"
+                     bind:modelWarning="@{viewmodel}"/>
+        </ViewFlipper>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
