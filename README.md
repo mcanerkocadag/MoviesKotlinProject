@@ -17,3 +17,7 @@ Gson kütüphanesi yerine Moshi kullanılmıştır.
 Retrofit converter factory olarak: MoshiConverterFactory
 Retrofit adapter factory olarak: CoroutineCallAdapterFactory
 kullanılmıştır.
+
+Resim cache kütüphanesi olarak Glide kullanılmıştır.
+
+Apk link : https://drive.google.com/open?id=1xQrPOAnp0z9e2oWXH-mgfjQotCzXq_zh
