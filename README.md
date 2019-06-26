@@ -20,4 +20,4 @@ kullanılmıştır.
 
 Resim cache kütüphanesi olarak Glide kullanılmıştır.
 
-Apk link : https://drive.google.com/open?id=1xQrPOAnp0z9e2oWXH-mgfjQotCzXq_zh
+Apk link : https://drive.google.com/open?id=1rI3HLrkTxIkhrssbFC4HVpr2XqMjYxPJ
