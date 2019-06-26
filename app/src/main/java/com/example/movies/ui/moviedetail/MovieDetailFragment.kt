@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.movies.databinding.FragmentMovieDetailBinding
 import com.example.movies.enums.ApiStatus
-import com.example.movies.ui.movies.MovieRecyclerviewAdapter
 import com.example.movies.utility.Utility
 
 class MovieDetailFragment : Fragment() {
@@ -27,17 +26,13 @@ class MovieDetailFragment : Fragment() {
     ): View? {
 
         binding = FragmentMovieDetailBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewmodel = viewModel
 
         var movie = arguments?.let { MovieDetailFragmentArgs.fromBundle(it).movie }
         viewModel.postMovie(movie)
 
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = this
-        binding.viewmodel = viewModel
-
-
         observers()
-       // viewModel.getPopularMovies(1)
 
         setHasOptionsMenu(true)
         return binding.root
@@ -60,14 +55,10 @@ class MovieDetailFragment : Fragment() {
                     Utility.showDialogPopup(fragmentManager, it)
                 }
                 ApiStatus.DONE -> {
-                    //Utility.showDialogPopup(fragmentManager, it)
                     Utility.hideDialogPopup(fragmentManager)
-                    Toast.makeText(context, "İşlem Bitti", Toast.LENGTH_SHORT).show()
                 }
                 ApiStatus.ERROR -> {
-                    // Utility.hideDialogPopup(fragmentManager)
                     Utility.showDialogPopup(fragmentManager, it)
-                    Toast.makeText(context, "İstek Başarısız", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
 
@@ -75,21 +66,5 @@ class MovieDetailFragment : Fragment() {
             }
             viewModel.onStatusTransactionComplated()
         })
-
-
-        val filmAdapter = MovieRecyclerviewAdapter(MovieRecyclerviewAdapter.MovieListener { movieID ->
-            Toast.makeText(context, "Film ID ${movieID.toString()}", Toast.LENGTH_SHORT).show()
-
-            //viewModel.onSubeClick(subeID)
-        })
-        //binding.recyclerView.adapter = filmAdapter
-
-        viewModel.movie.observe(this, Observer {
-
-            it?.let { subeler ->
-               // filmAdapter.addList(it.results!!)
-            }
-        })
-
     }
 }

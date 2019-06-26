@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import androidx.fragment.app.FragmentManager
+import com.example.movies.enums.ApiStatus
 import com.example.movies.utility.GenericDialog
 import com.example.movies.utility.Message
 
@@ -37,14 +38,12 @@ class Utility {
             return networkInfo != null
         }
 
+        fun createMessageModel(mesaj: String, apiStatus: ApiStatus): Message {
 
-        // lokalden ilgili bankanın resmini döner
-        fun getBase64(context: Context, key: String): String? {
-            return try {
-                val prefences = context.getSharedPreferences("PREFFILE", Context.MODE_PRIVATE)
-                prefences.getString(""+key, null)
-            } catch (e: Exception) {
-                null
+            return Message().let {
+                it.apiStatus = apiStatus
+                it.text = mesaj
+                it
             }
         }
     }

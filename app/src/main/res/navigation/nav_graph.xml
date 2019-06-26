@@ -30,6 +30,6 @@
     </fragment>
     <fragment android:id="@+id/movieDetailFragment" android:name="com.example.movies.ui.moviedetail.MovieDetailFragment"
               android:label="MovieDetailFragment">
-        <argument android:name="movie" app:argType="com.example.movies.network.movies.Result"/>
+        <argument android:name="movie" app:argType="com.example.movies.network.movies.Movie"/>
     </fragment>
 </navigation>
